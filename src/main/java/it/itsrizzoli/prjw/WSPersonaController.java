@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class WSPersonaController {
-    ArrayList<Persona> persone = new ArrayList();
+    ArrayList<Persona> persone = new ArrayList<>();
 
     public WSPersonaController() {
         persone.add(new Persona("Pippo", "pluto", "pippo@example.com"));
@@ -17,16 +17,20 @@ public class WSPersonaController {
         persone.add(new Persona("Snoopy", "cane", "snoopy@example.com"));
     }
 
-    // http://localhost:8080/api/personas
+    // http://localhost:8080/api/allpersonas
     @RequestMapping("/api/allpersonas")
     public ArrayList<Persona> getAllPersona() {
         return persone;
     }
 
-    // http://localhost:8080/api/animals?tipo=cane
+    // http://localhost:8080/api/personas?mail=
     @RequestMapping("/api/personas")
-    public ArrayList<Persona> getTypeOfPersona(@RequestParam String mail) {
-        ArrayList<Persona> ricerca = new ArrayList();
+    public ArrayList<Persona> getTypeOfPersona(@RequestParam(required = false) String mail) {
+        ArrayList<Persona> ricerca = new ArrayList<>();
+
+        if (mail == null || mail.isEmpty()) {
+            return persone;
+        }
 
         for (Persona pers: persone)
             if (pers.mail.equals(mail)) {
