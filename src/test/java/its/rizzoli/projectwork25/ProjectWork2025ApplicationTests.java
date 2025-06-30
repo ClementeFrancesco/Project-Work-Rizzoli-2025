@@ -1,13 +1,13 @@
-package it.itsrizzoli.prjw;
+package its.rizzoli.projectwork25;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class PrjwApplicationTests {
+class ProjectWork2025ApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+    @Test
+    void contextLoads() {
+    }
 
 }
